@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Signika+Negative&display=swap"
+        rel="stylesheet">
+    <title>Online | Clock See real timing</title>
+    <meta name="keywords" content="online clock, clock, digital clock">
+    <meta name="description" content="Real time clock in online">
+    <link rel="stylesheet" href="/css/clock-watch-style.css">
+</head>
+
+<body>
+    <div id="Digital-Clock">
+        <div id="clock">
+            <h1>Digital-Clock</h1>
+            <div id="clock-content">
+                <div id="dayBox" class="timeBox">
+                    <div class="time" id="addDay"></div>
+                    <div id="dayCaption" class="caption">Day</div>
+                </div>
+                <div id="hourBox" class="timeBox">
+                    <div class="time" id="addHours"></div>
+                    <div class="caption">Hours</div>
+                </div>
+                <div id="minuteBox" class="timeBox">
+                    <div class="time" id="addMinutes"></div>
+                    <div class="caption">Minutes</div>
+                </div>
+                <div class="timeBox">
+                    <div class="time" id="addSeconds"></div>
+                    <div class="caption">Seconds</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let addDay = document.getElementById('addDay');
+        let addHours = document.getElementById('addHours');
+        let addMinutes = document.getElementById('addMinutes');
+        let addSeconds = document.getElementById('addSeconds');
+
+        let allDays = {
+            01: "Mon",
+            02: "Tue",
+            03: "Wed",
+            04: "Thur",
+            05: "Fri",
+            06: "Sat",
+            00: "Sun"
+        }
+
+        function changeTime() {
+            let time = new Date();
+            let day = time.getDay();
+            let hours = time.getHours();
+            let minutes = time.getMinutes();
+            let seconds = time.getSeconds();
+            hours = hours > 12 ? hours - 12 : hours;
+            //console.log(hours + ":"+minutes+":"+seconds);
+            addDay.innerText = `${allDays[day]}`
+            addHours.innerText = `${hours}`
+            addMinutes.innerText = `${minutes}`
+            addSeconds.innerText = `${seconds}`
+
+
+        }
+        setInterval(changeTime, 1000);
+
+
+    </script>
+</body>
+
+</html>

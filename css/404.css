@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding : 0;
+    font-family: 'signika negative';
+}
+#error-container{
+    margin-top: 100px;
+    color : #333333;
+    text-align: center;
+    padding: 80px 0 100px;
+}
+#error-container h1{
+    font-size: 200px;
+    line-height: 1;
+    margin: 0 0 30px;
+}
+#error-container h2{
+    font-size: 32px;
+    margin: 15px;
+}
+#error-container p{
+    font-size: 21px;
+    margin: 0 0 10px;
+}
+#error-container a{
+    color: #eb1b24;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 0 0;
+}
+#i{
+    margin: 4px;
+    color: red;
+}

@@ -1,0 +1,573 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Nunito+Sans&family=Open+Sans&family=Rubik&family=Signika+Negative&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "bree serif", "signika negative";
+}
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.banner {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  padding: 100px;
+  background: #fff;
+  transition: 0.5s;
+}
+.banner.night {
+  background: #333;
+}
+.banner::before {
+  content: "";
+  position: absolute;
+  left: 30%;
+  top: 10%;
+  width: 150px;
+  height: 150px;
+  background: url(../Images/dotted.png);
+  background-size: cover;
+  animation: animateColors 10s linear infinite;
+  transition-delay: -5px;
+}
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .logo {
+  color: #333;
+  font-size: 2em;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+header .logo span {
+  color: #2196f3;
+}
+header ul {
+  display: flex;
+  gap: 0px;
+}
+header ul li {
+  list-style: none;
+}
+header ul li a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.2em;
+  color: #333;
+  transition: 0.5s;
+}
+
+header ul li a {
+  padding: 8px 13px;
+  border-radius: 10px;
+}
+header ul li a:hover {
+  background-color: red;
+  color: white;
+}
+
+.content {
+  position: relative;
+  max-width: 700px;
+  z-index: 10;
+}
+.content h3 {
+  font-size: 2em;
+  color: #333;
+  font-weight: 200;
+  transition: 0.5s;
+}
+.content h2 {
+  font-size: 5em;
+  color: #333;
+  font-weight: 200;
+  transition: 0.5s;
+}
+
+.content h2 span {
+  color: #e01e63;
+}
+.content p {
+  font-size: 1.2em;
+  color: #666;
+  margin: 10px 0;
+  transition: 0.5s;
+  width: 43vw;
+}
+
+.content button {
+  position: relative;
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 4px 9px;
+  font-size: 1.25em;
+  letter-spacing: 0.05em;
+  /* margin-right: 20px; */
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.content button.chat {
+  background: transparent;
+  color: #333;
+}
+.content button.chat ion-icon {
+  position: relative;
+  top: 5px;
+  color: #333;
+  font-size: 1.5em;
+}
+
+.sci {
+  position: absolute;
+  bottom: 30px;
+  gap: 20px;
+  display: flex;
+}
+.sci li {
+  list-style: none;
+}
+.sci li a {
+  text-decoration: none;
+  font-size: 1.75em;
+  color: #333;
+}
+.sci li a:hover {
+  color: #2196f3;
+}
+
+.dayNight {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background: #f0f0f0;
+  border-radius: 50%;
+  color: #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s;
+  font-size: 2em;
+}
+
+.banner.night .dayNight {
+  background: #444;
+  color: #fff;
+}
+
+.dayNight ion-icon:nth-child(2),
+.banner.night .dayNight ion-icon:nth-child(1) {
+  display: none;
+}
+
+.banner.night .dayNight ion-icon:nth-child(2) {
+  display: block;
+}
+#btns {
+  display: flex;
+  gap: 10px;
+  width: 127%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14px;
+}
+.banner.night header .logo,
+.banner.night .content h2,
+.banner.night .content p,
+.banner.night .content button.chat,
+.banner.night .sci li a,
+.banner.night header ul li a {
+  color: #fff;
+}
+
+.banner.night .sci li a:hover {
+  color: #2196f3;
+}
+.colors {
+  position: absolute;
+  right: 0px;
+  width: 800px;
+  /* max-width: 1100px; */
+  animation: animateColors 8s ease-in-out infinite;
+}
+@keyframes animateColors {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(50px);
+  }
+}
+.men {
+  position: absolute;
+  right: 10vw;
+  bottom: 0;
+  height: 85vh;
+  max-height: 105vh;
+  animation: animateMen 8s ease-in-out infinite;
+}
+
+/* for opposite direction of colors */
+@keyframes animateMen {
+  0%,
+  100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-50px);
+  }
+}
+
+/* for same direction of colors */
+@keyframes animateMen2 {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(50px);
+  }
+}
+
+/* for same direciton mobile responsive */
+/* for opposite direction of colors */
+@keyframes animateMenResponsive {
+  0%,
+  100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-50px);
+  }
+}
+@keyframes animateColorResponsive {
+  0%,
+  100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-50px);
+  }
+}
+
+#men-cut {
+  display: none;
+}
+
+/* responsive designs */
+
+@media (max-width: 1618px) {
+  .colors {
+    width: 800px;
+  }
+}
+@media (max-width: 1429px) {
+  .colors {
+    width: 700px;
+  }
+  .banner {
+    padding: 50px;
+  }
+}
+@media (max-width: 1130px) {
+  .banner {
+    padding: 20px;
+  }
+  .banner::before {
+    width: 100px;
+    height: 100px;
+  }
+  .colors {
+    width: 600px;
+  }
+  .men {
+    right: 4vw;
+  }
+  .content h2 {
+    font-size: 3.5em;
+  }
+  .content p {
+    font-size: 1.1em;
+  }
+  .dayNight {
+    top: 12px;
+    left: 95vw;
+  }
+
+  .content button {
+    /* padding: 10px 20px; */
+    font-size: 1.1em;
+    /* margin-right: 10px; */
+    font-weight: normal;
+  }
+  header {
+    padding-left: 50px;
+  }
+  header .logo {
+    font-size: 1.8em;
+  }
+}
+@media (max-width: 800px) {
+  .banner {
+    padding: 10px;
+  }
+  .banner::before {
+    width: 80px;
+    height: 80px;
+  }
+  .colors {
+    width: 500px;
+  }
+  .men {
+    right: 2vw;
+    height: 80vh;
+  }
+  .content h2 {
+    font-size: 3em;
+  }
+  .content h3 {
+    font-size: 1.8em;
+  }
+  .content p {
+    font-size: 1em;
+  }
+  .dayNight {
+    left: 94vw;
+  }
+
+  .content button {
+    /* padding: 6px 13px; */
+    font-size: 1em;
+    /* margin-right: 8px; */
+  }
+
+  header {
+    padding-left: 20px;
+  }
+  header .logo {
+    font-size: 1.8em;
+  }
+  .men {
+    border: none;
+  }
+}
+
+@media (max-width: 752px) {
+  header {
+    margin-left: 10px;
+  }
+  .banner {
+    overflow-y: hidden;
+  }
+  header ul {
+    position: absolute;
+    right: 11vw;
+  }
+  .dayNight {
+    left: 94vw;
+  }
+
+  .men {
+    display: none;
+  }
+  .colors {
+    right: -15vw;
+    width: 550px;
+  }
+  #men-cut {
+    height: 50vh;
+    display: block;
+    border-radius: 100%;
+    border: 1px solid rgb(119, 65, 119);
+    /* border: 1px solid red; */
+    position: relative;
+    right: 2vw;
+    animation: animateMen2 8s linear infinite;
+  }
+}
+
+/* design mobile responsive */
+@media (max-width: 600px) {
+  .chat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap : 5px; */
+  }
+  .ionicon {
+    position: relative;
+    top: -5px;
+  }
+  .men {
+    display: none;
+  }
+  .colors {
+    right: 1vw;
+    width: 400px;
+    position: absolute;
+    top: 18vw;
+    animation: animateColorResponsive 8s linear infinite;
+  }
+  #men-cut {
+    position: absolute;
+    top: 20vw;
+    right: 22vw;
+    height: 30vh;
+    animation: animateMenResponsive 8s linear infinite;
+  }
+  .banner::before {
+    width: 30px;
+    height: 30px;
+    left: 5%;
+  }
+
+  .content h3 {
+    /* margin-top: 29vh;
+    margin-left: 10vw; */
+    text-align: center;
+  }
+  .content h2 {
+    margin-left: 5vw;
+    width: 100%;
+    text-align: center;
+    font-size: 2.6em;
+  }
+  .content p {
+    margin-left: 5vw;
+    width: 100%;
+    text-align: center;
+  }
+  .content button {
+    /* padding: 6px 13px; */
+    font-size: 1em;
+    /* margin-top: 20px; */
+    /* margin-left: 0px; */
+  }
+  .btn {
+    margin-left: 30px;
+  }
+  header .logo {
+    font-size: 1.3rem;
+  }
+  header ul li a {
+    font-size: 1em;
+  }
+  .dayNight {
+    width: 35px;
+    height: 35px;
+    top: 15px;
+  }
+  header .logo {
+    margin-left: -24px;
+  }
+  header ul li a {
+    padding: 8px 10px;
+  }
+  .sci {
+    position: relative;
+    right: 30vw;
+    top: 35vh;
+  }
+
+  .my-info {
+    margin-top: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 150%;
+  }
+}
+@media (max-width: 500px) {
+  header .logo {
+    margin-left: -13px;
+  }
+
+  .banner {
+    overflow-y: hidden;
+  }
+  .content h3 {
+    font-size: 1.3em;
+  }
+  .content h2 {
+    font-size: 2.1em;
+  }
+
+  .my-info {
+    margin-top: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 150%;
+  }
+  .banner::before {
+    top: 6%;
+  }
+  header {
+    padding-left: 8px;
+  }
+}
+
+@media (max-width: 460px) {
+  header ul {
+    margin: 0 2px;
+  }
+
+  header ul li a {
+    padding: 8px 8px;
+  }
+}
+@media (max-width: 439px) {
+  header .logo {
+    font-size: 1.2rem;
+  }
+  header ul li a {
+    font-size: 0.9em;
+  }
+  .dayNight {
+    left: 94vw;
+  }
+}
+@media (max-width: 400px) {
+  header {
+    padding-left: 4px;
+  }
+  header .logo {
+    font-size: 1rem;
+  }
+  header ul li a {
+    font-size: 0.9em;
+  }
+  .dayNight {
+    left: 94vw;
+  }
+  .content button.chat ion-icon {
+    height: 50px;
+  }
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacToe_Game</title>
+    <meta name="description" content="Online-TicTacToe-Game | Play online live online">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Signika+Negative&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/tic-tac-toe-style.css">
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav>
+        <ul>
+            <li>MyTicTacToe</li>
+        </ul>
+    </nav>
+
+    <audio controls autoplay loop>
+        <source src="../Audios/backgroundMusic.mp3" type="audio/mpeg">
+    </audio>
+    <div id="heading">
+        <h1>Welcome to Tic Tac Toe</h1>
+    </div>
+    <div class="gameContainer">
+        <div class="container">
+            <div class="line"></div>
+            <div class="box bt-0 bl-0"> <span class="boxtext"></span></div>
+            <div class="box bt-0"> <span class="boxtext"></span></div>
+            <div class="box bt-0 br-0"> <span class="boxtext"></span></div>
+            <div class="box bl-0"> <span class="boxtext"></span></div>
+            <div class="box"> <span class="boxtext"></span></div>
+            <div class="box br-0"> <span class="boxtext"></span></div>
+            <div class="box bl-0 bb-0"> <span class="boxtext"></span></div>
+            <div class="box bb-0"> <span class="boxtext"></span></div>
+            <div class="box br-0 bb-0"> <span class="boxtext"></span></div>
+        </div>
+        <div class="gameInfo">
+            <div id="showing">
+                <span class="info">Turn for X : </span>
+                <button id="reset">Reset</button>
+            </div>
+            <div>
+                <span class="imgBox">
+                    <!-- <video controls autoplay loop muted src="/excited.mp4"></video> -->
+                    <img src="excited.jpg" alt="">
+                    <!-- <img src="/excited.gif" alt=""> -->
+                </span>
+            </div>
+        </div>
+    </div>
+    
+<script>
+    
+console.log("Welcome to Tic Tac Toe");
+
+// let backMusic = new Audio("backgroundMusic.mp3")
+let audioTurn = new Audio("../Audios/ting.mp3");
+let gameover = new Audio("../Audios/gameOver.mp3");
+
+// backMusic.play();
+
+
+let turn = "X";
+let isGameOver = false;
+
+// change turn function 
+const changeTurn = () => {
+    return turn === "X" ? "0" : "X";
+}
+
+// function to check for win
+const checkWin = () => {
+    let boxtext = document.getElementsByClassName('boxtext');
+    let wins = [
+        [0, 1, 2, 2, 4, 0],
+        [3, 4, 5, 2, 13, 0],
+        [6, 7, 8, 2, 22, 0],
+        [0, 3, 6, -7, 13.5, 90],
+        // transform: translate(204px, 149px); rotate: 45deg;
+        [1, 4, 7, 2, 13.5, 90],
+        [2, 5, 8, 11, 13.5, 90],
+        [0, 4, 8, 2, 13.5,45],
+        [2, 4, 6,2,13.5,-45],
+    ]
+
+    wins.forEach(e => {
+        if ((boxtext[e[0]].innerText === boxtext[e[1]].innerText) && (boxtext[e[2]].innerText === boxtext[e[1]].innerText) && (boxtext[e[0]].innerText !== "")) {
+            document.querySelector('.info').innerText = boxtext[e[0]].innerText + " Won"
+            isGameOver = true;
+            document.querySelector('.imgBox').getElementsByTagName('img')[0].style.width = "200px";
+
+
+            document.querySelector(".line").style.transform = `translate(${e[3]}vw, ${e[4]}vw) rotate(${e[5]}deg)`;
+            document.querySelector('.line').style.width = "23vw";
+
+            gameover.play();
+        }
+    })
+}
+
+//  Game main logic
+
+let boxes = document.getElementsByClassName("box");
+Array.from(boxes).forEach(element => {
+    let boxtext = element.querySelector('.boxtext')
+    element.addEventListener('click', () => {
+        if (boxtext.innerText === '') {
+            audioTurn.play();
+            boxtext.innerText = turn;
+            turn = changeTurn();
+            checkWin();
+            if (!isGameOver) {
+                document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;
+            }
+        }
+    })
+})
+
+
+// add onclick to reset btn
+reset.addEventListener('click', () => {
+    let boxtexts = document.querySelectorAll('.boxtext');
+    Array.from(boxtexts).forEach(element => {
+        element.innerText = " ";
+    })
+    turn = "X";
+    document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;
+    isGameOver = false;
+    // document.querySelector('.imgBox').getElementsByTagName('video')[0].style.width = "0px";
+    document.querySelector('.imgBox').getElementsByTagName('img')[0].style.width = "0px";
+
+    document.querySelector('.line').style.width = "0vw";
+})
+
+</script>
+</body>
+
+</html>

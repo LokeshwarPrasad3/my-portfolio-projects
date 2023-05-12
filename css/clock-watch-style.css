@@ -1,0 +1,77 @@
+*{
+    box-sizing : border-box;
+    margin : 0;
+    padding : 0;
+    font-family: 'Signika negative';
+}
+#clock{
+    border : 2px dashed black;
+    height: 300px;
+    width: 500px;
+    margin: 140px auto ;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #9cf2d7;
+    border-radius: 20px;
+}
+h1{
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    margin-top: -10px;
+}
+.time{
+    font-size: 3rem;
+    text-align: center;
+    height: 70px;
+    width: 70px;
+}
+#addDay{
+    text-align: center;
+    font-size: 40px;
+    position: relative;
+    top : 5px;
+}
+.timeBox{
+    border-radius: 5px;
+    background-color: rgb(224, 43, 11);
+    color : white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border : 2px solid black;
+
+}
+.caption{
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: -9px;
+    margin-bottom: 6px;
+}
+#clock-content{
+    display: flex;
+}
+@media (max-width: 527px){
+    #clock{
+        width: 400px;
+    }
+}
+@media (max-width: 415px){
+    #clock{
+        width: 380px;
+    }
+}
+@media (max-width: 395px){
+    #clock{
+        width: 360px;
+    }
+}
+@media (max-width: 370px){
+    #clock{
+        width: 345px;
+    }
+}

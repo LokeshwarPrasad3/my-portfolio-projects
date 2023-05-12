@@ -1,0 +1,38 @@
+h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .container {
+    margin-top: 100px;
+  }
+  
+  .card-body a {
+    font-family: "Signika Negative";
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  .card-body a:hover {
+    font-size: 1.15rem;
+  }
+  .card-body a:active {
+    font-size: 1.1rem;
+  }
+  .card-body {
+    height: 250px;
+    margin: auto;
+  }
+  
+  .card-body p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    font-family: "Signika Negative", sans-serif;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }

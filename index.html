@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to my portfolio website! My name is Lokeshwar Prasad and I am a BTech Engineering CSE student with expertise in frontend design and fullstack development. Explore my work and skills on this website.">
+    <meta name="keywords" content="Lokeshwar Prasad, Portfolio, Frontend Design, Fullstack Development, BTech Engineering, CSE Student">
+    <title>Lokeshwar | Frontend Designer and Fullstack Developer Portfolio</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Nunito+Sans&family=Rubik&family=Signika+Negative&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <section class="banner">
+        <header>
+            <a href="index.html" class="logo">
+                <span>My</span>Portfolio_ </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="my-projects.html">PROJECTS</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </header>
+        <div class="content">
+            <div class="my-info">
+                <div class="message">
+                    <h3>Hey_</h3>
+                    <h2>I am <span id="text"></span></h2>
+                    <p>
+                        <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur aspernatur nostrum aperiam ullam optio consectetur adipisci alias, commodi a fuga! -->
+                        I am Full Stack Developer and pursuing my second year of BTech Computer Science branch.I am learner & spend more time on Computer technologies. 
+                        <!-- email me at : lokeshwar.prasad.cse@gmail.com -->
+                    </p>
+                </div>
+                <div id="btns">
+                    <button class="btn">Hire Me</button>
+                    <button class="chat">
+                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                        Let's Chat
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <img src="Images/colors.png" alt="" class="colors" srcset="">
+        <img src="Images/men.png" alt="" class="men" srcset="">
+
+        <ul class="sci">
+            <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+            <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+            <li><a href="#"><ion-icon name="logo-github"></ion-icon></a></li>
+            <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+        </ul>
+
+        <div class="dayNight">
+            <ion-icon name="moon-outline"></ion-icon>
+            <ion-icon name="sunny-outline"></ion-icon>
+        </div>
+
+
+        <img src="Images/men-cut.png" alt="" id="men-cut" class="men" srcset="">
+
+    </section>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+
+    <script>
+
+        let typingText = new Typed("#text", {
+            strings: ["Lokeshwar", "Programmer", "Designer"],
+            loop: true,
+            typeSpeed: 100,
+            backSpeed: 50,
+            backDelay: 1000
+        })
+
+        let banner = document.querySelector('.banner');
+        let dayNight = document.querySelector('.dayNight');
+        dayNight.onclick = function () {
+            banner.classList.toggle('night');
+        }
+    </script>
+
+</body>
+
+</html>

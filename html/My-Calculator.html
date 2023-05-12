@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Signika+Negative&display=swap"
+    rel="stylesheet">
+    <title>Online-Calculator | Best for online searching Calculation sites</title>
+    <link rel="stylesheet" href="/css/my-calculator-style.css">
+  </head>
+  <body>
+      <div id="main">
+        <h1>Owsome Web - Calculater</h1>
+      <div class="container">
+        <h1 class="center">This is Simple Calculater</h1>
+      <header id="header">
+        <input type="text" name="console" id="console" />
+      </header>
+      <div class="row">
+        <button class="button">1</button>
+        <button class="button">2</button>
+        <button class="button">3</button>
+        <button class="button">C</button>
+      </div>
+      <div class="row">
+        <button class="button">4</button>
+        <button class="button">5</button>
+        <button class="button">6</button>
+        <button class="button">*</button>
+
+      </div>
+      <div class="row">
+        <button class="button">7</button>
+        <button class="button">8</button>
+        <button class="button">9</button>
+        <button class="button">/</button>
+
+      </div>
+      <div class="row" id="row">
+        <button class="button">0</button>
+        <button class="button">-</button>
+        <button class="button" id="equal-button" >+</button>
+        <button class="button" id="equal-button">=</button>
+      </div>
+    </div>
+  </div>
+
+    <script>
+        let string = "";
+let buttons = document.querySelectorAll(".button");
+Array.from(buttons).forEach((button) => {
+  button.addEventListener('click', (e) => {
+    // e means event
+    if (e.target.innerHTML == '=') {
+      string = e.target.innerHTML  +  eval(string);
+      document.querySelector('input').value = string;
+    }
+    else if (e.target.innerHTML == 'C'){
+        string = "";
+        document.querySelector('input').value = string;
+    } 
+    else {
+      console.log(e.target);
+      string = string + e.target.innerHTML;
+      document.querySelector('input').value = string;
+    };
+  });
+});
+
+    </script>
+  </body>
+</html>

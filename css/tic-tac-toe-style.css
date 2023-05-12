@@ -1,0 +1,171 @@
+* {
+  font-family: "Signika Negative", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#heading h1 {
+  margin-bottom: 10px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: -20px;
+  font-size: 2.2rem;
+}
+
+nav {
+  background-color: purple;
+  color: white;
+  height: 65px;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+#loginBtn {
+  position: absolute;
+  right: 12%;
+}
+#loginBtn button {
+  padding: 4px 14px;
+  /* border : 1px solid red; */
+  border: none;
+  background-color: #30e146;
+  border-radius: 6px;
+  font-family: "signika negative";
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+#loginBtn button:hover {
+  background-color: #06f724;
+  transform: scale(1.09);
+}
+#loginBtn button:active {
+  background-color: #06f724;
+  transform: scale(0.9999);
+}
+button a {
+  text-decoration: none;
+}
+
+.gameContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.line {
+  background: rgb(89, 7, 243);
+  width: 0vw;
+  /* width: 23vw; */
+  height: 3px;
+  border-radius: 5px;
+  position: absolute;
+  transition: width 0.1s ease-in-out;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 9vw);
+  grid-template-rows: repeat(3, 9vw);
+  position: relative;
+}
+
+.box {
+  font-family: "roboto";
+  border: 2px solid black;
+  font-size: 8vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box:hover {
+  background-color: rgb(224, 212, 224);
+  cursor: pointer;
+}
+
+.info {
+  font-size: 24px;
+}
+
+.gameInfo {
+  padding: 0 34px;
+  font-family: "Baloo Bhaina 2";
+}
+
+.imgBox img {
+  margin-top: 20px;
+  width: 0;
+  transition: width 0.5s ease-in;
+}
+/* .imgBox img {
+    width: 100px;
+    transition: width 0.5s ease-in;
+  } */
+
+.br-0 {
+  border-right: 0;
+}
+.bl-0 {
+  border-left: 0;
+}
+.bt-0 {
+  border-top: 0;
+}
+.bb-0 {
+  border-bottom: 0;
+}
+
+#reset {
+  margin: 0 15px;
+  padding: 3px 10px;
+  background: #e0ace0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "signika negative", "Bree serif";
+  font-size: 1.5rem;
+}
+
+#reset:hover {
+  background: #e5c7e5;
+}
+
+/* when having width max 800px */
+@media screen and (max-width: 800px) {
+  .gameContainer {
+    flex-wrap: wrap;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(3, 15vw);
+    grid-template-rows: repeat(3, 15vw);
+  }
+  .box {
+    font-size: 11vw;
+  }
+  #showing {
+    margin-top: 40px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .line {
+    background: rgb(89, 7, 243);
+    width: 0vw;
+    /* width: 23vw; */
+    height: 3px;
+    border-radius: 5px;
+    position: absolute;
+    transition: width 0.1s ease-in-out;
+  }
+}
+audio {
+  display: none;
+}
