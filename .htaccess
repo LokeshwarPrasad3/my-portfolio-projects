@@ -1,0 +1,2 @@
+# For My error page
+ErrorDocument 404 /404.html 

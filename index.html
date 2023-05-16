@@ -15,13 +15,13 @@
 <body>
     <section class="banner">
         <header>
-            <a href="index.html" class="logo">
+            <a href="/" class="logo">
                 <span>My</span>Portfolio_ </a>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="https://www.linkedin.com/in/lokeshwar-prasad-dewangan-7b2163211/">About</a></li>
                 <li><a href="my-projects.html">PROJECTS</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="https://www.instagram.com/lokeshwarprasad1/">Contact</a></li>
             </ul>
         </header>
         <div class="content">
@@ -30,14 +30,13 @@
                     <h3>Hey_</h3>
                     <h2>I am <span id="text"></span></h2>
                     <p>
-                        <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur aspernatur nostrum aperiam ullam optio consectetur adipisci alias, commodi a fuga! -->
                         I am Full Stack Developer and pursuing my second year of BTech Computer Science branch.I am learner & spend more time on Computer technologies. 
                         <!-- email me at : lokeshwar.prasad.cse@gmail.com -->
                     </p>
                 </div>
                 <div id="btns">
-                    <button class="btn">Hire Me</button>
-                    <button class="chat">
+                    <button class="btn" onclick="hireMe()">Hire Me</button>
+                    <button class="chat" onclick="letChat()">
                         <ion-icon name="chatbubbles-outline"></ion-icon>
                         Let's Chat
                     </button>
@@ -49,10 +48,10 @@
         <img src="Images/men.png" alt="" class="men" srcset="">
 
         <ul class="sci">
-            <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
-            <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-            <li><a href="#"><ion-icon name="logo-github"></ion-icon></a></li>
-            <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+            <li><a href="https://www.facebook.com/lokeshwarprasad.dewangan.7/"><ion-icon name="logo-facebook"></ion-icon></a></li>
+            <li><a href="https://www.linkedin.com/in/lokeshwar-prasad-dewangan-7b2163211/"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+            <li><a href="https://github.com/LokeshwarPrasad3"><ion-icon name="logo-github"></ion-icon></a></li>
+            <li><a href="https://www.instagram.com/lokeshwarprasad1/"><ion-icon name="logo-instagram"></ion-icon></a></li>
         </ul>
 
         <div class="dayNight">
@@ -83,6 +82,16 @@
         let dayNight = document.querySelector('.dayNight');
         dayNight.onclick = function () {
             banner.classList.toggle('night');
+        }
+
+        // for click in let's chat button it redirect to instagram page
+        function letChat(){
+            location.href = 'https://www.instagram.com/lokeshwarprasad1/';
+        }
+
+        // for click in Hire me chat button it redirect to instagram page
+        function hireMe(){
+            location.href = 'https://www.linkedin.com/in/lokeshwar-prasad-dewangan-7b2163211/';
         }
     </script>
 
