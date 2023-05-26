@@ -34,6 +34,7 @@
                         <!-- email me at : lokeshwar.prasad.cse@gmail.com -->
                     </p>
                 </div>
+                <button id="speak-btn" class="btn">click to listen..</button>
                 <div id="btns">
                     <button class="btn" onclick="hireMe()">Hire Me</button>
                     <button class="chat" onclick="letChat()">
@@ -92,6 +93,23 @@
         // for click in Hire me chat button it redirect to instagram page
         function hireMe(){
             location.href = 'https://www.linkedin.com/in/lokeshwar-prasad-dewangan-7b2163211/';
+        }
+
+
+        // speech recognisation
+        // let speak_btn = document.getElementById('speak-btn');
+        if ('speechSynthesis' in window) {
+            const speech = new SpeechSynthesisUtterance();
+            
+            // Set the text to be spoken
+            speech.text = " I am Full Stack Developer and pursuing my second year of BTech Computer Science branch. I am learner & spend more time on Computer technologies.";
+
+            // Speak the text when the button is clicked
+            document.getElementById('speak-btn').addEventListener('click', () => {
+                window.speechSynthesis.speak(speech);
+            });
+        } else {
+            console.log('Text-to-speech not supported in this browser.');
         }
     </script>
 
