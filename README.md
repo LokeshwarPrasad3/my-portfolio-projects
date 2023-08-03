@@ -1,6 +1,6 @@
 # Portfolio
 
-This is my personal portfolio website showcasing my some projects. It is built using pure HTML, CSS, and JavaScript and is hosted at [http://newsswallah.ml/](http://newsswallah.ml/).
+This is my personal portfolio website showcasing my some projects. It is built using pure HTML, CSS, and JavaScript and is hosted at [https://lokeshwar-creatives.netlify.app/](https://lokeshwar-creatives.netlify.app/).
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ This is my personal portfolio website showcasing my some projects. It is built u
 
 ## Demo
 
-You can visit the live portfolio website at [http://newsswallah.ml/](http://newsswallah.ml/).
+You can visit the live portfolio website at [https://lokeshwar-creatives.netlify.app/](https://lokeshwar-creatives.netlify.app/).
 
 ## Features
 
