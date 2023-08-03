@@ -1,0 +1,193 @@
+/* universal selecter */
+* {
+
+    box-sizing: border-box;
+    background-color: #142c50;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'signika negative';
+}
+
+/* main container of page */
+.qrcode_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    flex-direction: column;
+}
+
+/* main content */
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0rem;
+    font-family: 'signika negative';
+    background-color: #c7dcdd;
+    padding: 2rem;
+    box-shadow: 2px 10px 25px rgb(207, 204, 204);
+    border-radius: 5px;
+}
+
+/* h1 of main */
+.qr_heading {
+    background: linear-gradient(to right, #833ab4, #e95983);
+    color: #f5e040;
+    padding: 8px 40px;
+    border: 1px solid #362f2d;
+    border-radius: 10px;
+    font-family:'signika negative';
+    font-weight: bold;
+}
+
+/* form where all rendering */
+#qr_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #c7dcdd;
+    border-radius: 10px;
+    height: 15rem;
+}
+
+/* block which is visible and hide when show qr */
+#form_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2.6rem;
+    background-color: #c7dcdd;
+
+}
+
+/* it is parent of input type text where input user */
+.qr_input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c7dcdd;
+}
+
+/* input fields where input user*/
+#qr_input_field {
+    height: 2.4rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: 15rem;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    overflow: hidden;
+    font-size: 1.2rem;
+    color: white;
+    font-family: 'signika negative';
+    background-color: #9fb5b6;
+    background-color: #5d4168;
+}
+
+/* placeholder of that input */
+#qr_input_field::placeholder {
+    color: rgb(235, 186, 186);
+}
+
+/* parent div of generate qrcode btn */
+.generate_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c7dcdd;
+}
+
+/* button which genrate qr code  */
+#generate-button {
+    padding: 0.3rem 0.6rem 0.5rem 0.6rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(96, 160, 36);
+    font-family: 'bree serif';
+    cursor: pointer;
+    transition: all 0.4s linear;
+}
+
+/* hover on generate button */
+#generate-button:hover {
+    background-color: rgb(69, 105, 34);
+
+}
+
+/* Conten which is visible when clicked generateBtn */
+#show_qr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #c7dcdd;
+    gap: 1rem;
+    position: relative;
+    top: 1rem;
+    display: none;
+}
+
+/* here generate qrcode on that element */
+#qrcode {
+    width: 190px;
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c7dcdd;
+    border-radius: 10px;
+    border: 2px solid red;
+}
+
+/*parent div of button which is below of qr code  */
+.qr_btn {
+    background-color: #c7dcdd;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* qrcode below button close , and download */
+#close_btn,
+#download_btn {
+    padding: 0.2rem 0.6rem 0.4rem 0.6rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(96, 160, 36);
+    font-family: 'bree serif';
+    cursor: pointer;
+    transition: all 0.4s linear;
+
+}
+
+#close_btn:hover,
+#download_btn:hover {
+    background-color: rgb(69, 105, 34);
+
+}
+
+/* when have mobile size */
+@media (max-width:458px) {
+    /* box shadow is now 90% */
+    #main{
+        width: 90%;
+    }
+    /* heading changes  */
+    .qr_heading{
+        font-size: 1.4rem;
+        padding: 8px 20px;
+        width: 100%;
+        text-align: center;
+    }
+    
+}

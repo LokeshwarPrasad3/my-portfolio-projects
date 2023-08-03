@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>QRCode Generator | Lokeshwar Prasad</title>
+    <meta name="description"
+        content="Generate QR codes for text or URLs with the QRCode Generator. Create custom QR codes easily." />
+    <meta name="keywords" content="QR code generator, QR code, generate QR code, QR code creator" />
+    <meta name="author" content="Lokeshwar Prasad" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bitter&family=Bree+Serif&family=Cormorant+Garamond&family=Signika:wght@500&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="/css/QR-code-generator.css">
+</head>
+
+<body>
+    <!-- main container of that page -->
+    <div class="qrcode_container">
+        <!-- main content -->
+        <div id="main">
+            <!-- heading -->
+            <h1 class="qr_heading">QR Code Generator</h1>
+            <!-- form where all rendering -->
+            <form id="qr_form">
+                <!-- block which is visible and hide when show qr -->
+                <div id="form_block">
+                    <!-- it is parent of input type text where input user -->
+                    <div class="qr_input">
+                        <!-- input fields where input user -->
+                        <input type="text" id="qr_input_field" placeholder="Enter text or URL" autocomplete="off" 
+                        onkeypress="handleKeyPress(event)";
+                        />
+                    </div>
+                    <!-- parent div of generate qrcode btn -->
+                    <div class="generate_btn">
+                        <!-- button which genrate qr code -->
+                        <button type="button" id="generate-button">Generate QR Code</button>
+                    </div>
+                </div>
+
+                <!-- Conten which is visible when clicked generateBtn -->
+                <div id="show_qr">
+                    <!-- <div id="qrcode">
+                         rendering when clicked generate and delete when close
+                    </div> -->
+                    <div class="qr_btn">
+                        <!-- qrcode below button close , and download -->
+                        <button type="button" id="close_btn">Close</button>
+                        <button type="button" id="download_btn">Download</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        let form_block = document.getElementById('form_block');
+        let show_qr = document.getElementById('show_qr');
+        let qr_form = document.getElementById('qr_form');
+
+        let elem_qrcode = document.createElement('div');
+        elem_qrcode.id = 'qrcode';
+
+
+        //👉 QR CODE GENERATE PROCESS
+        // Get id of generate button 
+        let generateQRButton = document.getElementById('generate-button');
+
+        // function which generate QRcode
+        function generateQRCode() {
+            // getting user input value
+            let query = document.getElementById('qr_input_field').value;
+            // input cannot be empty
+            if (query.trim() !== "") {
+                // now insert on show_qr div to qrelement which is generated before
+                show_qr.insertBefore(elem_qrcode, show_qr.firstChild);
+                // getting its id for target
+                let qrPlace = document.getElementById('qrcode');
+
+                // hide input interface
+                form_block.style.display = 'none';
+                // show qr code generated interface
+                show_qr.style.display = 'flex';
+
+                // making qr code on qrPlace where it placed
+                var make_qr = new QRCode(qrPlace, {
+                    // query is stored on qrcode
+                    text: query,
+                    width: 170,
+                    height: 170,
+                    colorLight: "#FFFFFF",
+                    correctLevel: QRCode.CorrectLevel.H,
+                    borderRadius: "10px"
+                });
+                // making qrcode
+                make_qr.makeCode();
+            } else {
+                // if empty user input then get alert
+                let query_ = document.getElementById('qr_input_field');
+                query_.value = "";
+                alert("Input Field Cannot Have Empty!");
+            }
+        }
+
+        // when clicked then generating qrcode
+        generateQRButton.addEventListener('click', generateQRCode);
+
+        // if enter button is clicked
+        function handleKeyPress(event){
+            if(event.keyCode == 13){
+                event.preventDefault();
+                generateQRCode();
+            }
+        }
+
+
+        //👉 CLOSE GENERATED QR INTERFACE
+        // Target close btn
+        let close_btn = document.getElementById('close_btn');
+
+        // adding eventListener on closeBtn
+        close_btn.addEventListener('click', function (e) {
+            // first reset input type text 
+            let query_ = document.getElementById('qr_input_field');
+            query_.value = "";
+            // getting qrcode generated element by id and inside remove elements
+            let elem_qrcode = document.getElementById('qrcode');
+            elem_qrcode.innerHTML = "";
+            if (elem_qrcode) {
+                elem_qrcode.remove(); // Remove the elem_qrcode element
+            }
+
+            // Now hide current state and goto Main interface
+            form_block.style.display = 'flex';
+            // hide current state
+            show_qr.style.display = 'none';
+        });
+
+
+        //👉 DOWNLOAD BUTTON | getting screenshot of page
+        let download_btn = document.getElementById('download_btn');
+        // target and adding event listner
+        download_btn.addEventListener('click', function () {
+            window.print(); // print current page
+        });
+
+
+    </script>
+</body>
+
+</html>
