@@ -87,12 +87,21 @@ nav .menu-btn {
     margin-right: -2rem;
     color: white;
 }
-
+/* indicate projects  */
+.indicator{
+    color : white;
+    color: white;
+    font-size: 1.5rem;
+    position: relative;
+    left: 2rem;
+    top: -0.35rem;
+    display: none;
+}
 
 .menu-btn i {
     position: fixed;
     right: 3rem;
-    top: 1.9rem;
+    top: 1.7rem;
     color: black;
 }
 
@@ -173,7 +182,9 @@ nav .menu-btn {
         content: "\f00d";
         font-size: 20px;
     }
-
+    .indicator{
+        display: block;
+    }
     #click {
         visibility: hidden;
         position: absolute;
@@ -313,6 +324,7 @@ nav .menu-btn {
         position: absolute;
         top: 29px;
         right: 23vw;
+        display: none;
     }
 
     .darkBtn img {
