@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Find Your IP, IP address, online tool">
+    <meta name="author" content="Lokeshwar Prasad">
+    <meta name="description"
+        content="Find-Your-IP is an online tool to quickly locate and display your IP address. Check your current IP address instantly.">
+    <title>Find-Your-IP | Lokeshwar Prasad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Signika+Negative&family=Bree+Serif&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Reset styles for all elements to remove default padding and margin */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        /* Define a custom font family named 'signika' */
+        .font-signika {
+            font-family: 'signika negative';
+            /* Apply the 'signika negative' font to elements with this class */
+        }
+
+        /* Define another custom font family named 'bree serif' */
+        .font-bree {
+            font-family: 'bree serif';
+            /* Apply the 'bree serif' font to elements with this class */
+        }
+    </style>
+    <!-- taking reference of talwindcss for use that -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-800">
+
+    <!-- here is full container -->
+    <div class="container_box flex h-[92vh] flex-col gap-[2rem] justify-center items-center">
+        <h1 class="heading text-white text-5xl font-bree">Get-Your-Details</h1>
+        <div id="showDataBox"
+            class="show_data flex gap-5 flex-col rounded justify-left w-fit px-4 py-6 justify-center text-black  bg-gray-300 shadow-lg shadow-yellow-200 ">
+
+            <!-- Dynamically injected here   -->
+
+        </div>
+    </div>
+
+
+
+    <script>
+
+        // Get a reference to the HTML element where you want to display the data
+        let showDataBox = document.getElementById("showDataBox");
+
+        // Function to fetch the user's IP address using the ipinfo.io API
+        const getMyIp = async () => {
+            try {
+                const res = await fetch('https://ipinfo.io/json');
+                const data = await res.json(); // Make sure to await the JSON response
+                return data.ip;
+            } catch (error) {
+                console.error("Error getting IP address:", error); // Log the error
+                return false;
+            }
+        }
+ 
+        // Function to show the user's data
+        const showMyData = async () => {
+            try {
+                showDataBox.innerHTML = "<h1 class='text-3xl text-center font-bree'>Loading.....</h1>"
+                const myCurrentIp = await getMyIp(); // Get the user's IP address
+                if (myCurrentIp === false) {
+                showDataBox.innerHTML = ""
+                    // Handle the case where IP retrieval fails
+                    showDataBox.innerHTML = `
+                            <h1 class='text-3xl text-center font-bree'>Sorry! Something Went Wrong</h1>
+                            <div class="flex items-center justify-center w-full">
+                                <a href="/" class="bg-red-700 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full">
+                                    Refresh
+                                </a>
+                            </div>
+                            `;
+                    return;
+                }
+
+                // Make a request to a custom API with the IP address
+                const apiUrl = `https://freeipapi.com/api/json/${myCurrentIp}`;
+                const res = await fetch(apiUrl);
+                const data = await res.json(); // Make sure to await the JSON response
+
+                  showDataBox.innerHTML = ""
+
+                // Iterate through the data and display it in a div element
+                for (const key in data) {
+                    const value = data[key];
+                    showDataBox.innerHTML +=
+                        `
+                    <div class="box flex justify-left items-center gap-3 shadow-sm">
+                        <div class="span text-[1.6rem] font-bold font-signika">${key} : </div>
+                        <div class="span text-blue-900 text-2xl font-bold font-signika">${value}</div>
+                    </div>
+            `;
+                }
+            } catch (error) {
+                console.error("Error:", error); // Log any errors that occur during data retrieval or rendering
+            }
+        }
+
+        showMyData(); // Call the function to start the process
+
+        // data getted like that
+        const newData = {
+            ipVersion: 4,
+            ipAddress: "49.35.229.54",
+            latitude: 21.183283,
+            longitude: 81.283302,
+            countryName: "India",
+            countryCode: "IN",
+            timeZone: "+05:30",
+            zipCode: "491221",
+            cityName: "Durg",
+            regionName: "Chhattisgarh",
+            continent: "Asia",
+            continentCode: "AS"
+        };
+
+
+    </script>
+
+</body>
+
+</html>
