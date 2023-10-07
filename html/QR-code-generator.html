@@ -1,157 +1,291 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>QRCode Generator | Lokeshwar Prasad</title>
-    <meta name="description"
-        content="Generate QR codes for text or URLs with the QRCode Generator. Create custom QR codes easily." />
-    <meta name="keywords" content="QR code generator, QR code, generate QR code, QR code creator" />
+    <meta
+      name="description"
+      content="Generate QR codes for text or URLs with the QRCode Generator. Create custom QR codes easily."
+    />
+    <meta
+      name="keywords"
+      content="QR code generator, QR code, generate QR code, QR code creator"
+    />
     <meta name="author" content="Lokeshwar Prasad" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Bitter&family=Bree+Serif&family=Cormorant+Garamond&family=Signika:wght@500&display=swap"
-        rel="stylesheet" />
+      href="https://fonts.googleapis.com/css2?family=Bitter&family=Bree+Serif&family=Cormorant+Garamond&family=Signika:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <link rel="stylesheet" href="/css/QR-code-generator.css">
-</head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="/css/QR-code-generator.css" />
+  </head>
 
-<body>
+  <body>
     <!-- main container of that page -->
     <div class="qrcode_container">
-        <!-- main content -->
-        <div id="main">
-            <!-- heading -->
-            <h1 class="qr_heading">QR Code Generator</h1>
-            <!-- form where all rendering -->
-            <form id="qr_form">
-                <!-- block which is visible and hide when show qr -->
-                <div id="form_block">
-                    <!-- it is parent of input type text where input user -->
-                    <div class="qr_input">
-                        <!-- input fields where input user -->
-                        <input type="text" id="qr_input_field" placeholder="Enter text or URL" autocomplete="off" 
-                        onkeypress="handleKeyPress(event)";
-                        />
-                    </div>
-                    <!-- parent div of generate qrcode btn -->
-                    <div class="generate_btn">
-                        <!-- button which genrate qr code -->
-                        <button type="button" id="generate-button">Generate QR Code</button>
-                    </div>
-                </div>
+      <!-- main content -->
+      <div id="main">
+        <!-- heading -->
+        <h1 class="qr_heading">QR Code Generator</h1>
+        <!-- form where all rendering -->
+        <form id="qr_form">
+          <!-- block which is visible and hide when show qr -->
+          <div id="form_block">
+            <!-- it is parent of input type text where input user -->
+            <div class="qr_input">
+              <!-- input fields where input user -->
+              <input
+                type="text"
+                id="qr_input_field"
+                placeholder="Enter text or URL"
+                autocomplete="off"
+                onkeypress="handleKeyPress(event)"
+              />
+            </div>
+            <!-- parent div of generate qrcode btn -->
+            <div class="generate_btn">
+              <!-- button which genrate qr code -->
+              <button type="button" id="generate-button">
+                Generate QR Code
+              </button>
+            </div>
+          </div>
 
-                <!-- Conten which is visible when clicked generateBtn -->
-                <div id="show_qr">
-                    <!-- <div id="qrcode">
+          <!-- Conten which is visible when clicked generateBtn -->
+          <div id="show_qr">
+            <!-- <div id="qrcode">
                          rendering when clicked generate and delete when close
                     </div> -->
-                    <div class="qr_btn">
-                        <!-- qrcode below button close , and download -->
-                        <button type="button" id="close_btn">Close</button>
-                        <button type="button" id="download_btn">Download</button>
-                    </div>
-                </div>
-
-            </form>
-        </div>
+            <div class="qr_btn">
+              <!-- qrcode below button close , and download -->
+              <button type="button" id="close_btn">Close</button>
+              <button type="button" id="download_btn">Download</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
 
-
-
     <script>
+      let form_block = document.getElementById("form_block");
+      let show_qr = document.getElementById("show_qr");
+      let qr_form = document.getElementById("qr_form");
 
-        let form_block = document.getElementById('form_block');
-        let show_qr = document.getElementById('show_qr');
-        let qr_form = document.getElementById('qr_form');
+      let elem_qrcode = document.createElement("div");
+      elem_qrcode.id = "qrcode";
 
-        let elem_qrcode = document.createElement('div');
-        elem_qrcode.id = 'qrcode';
+      // 👉👉👉 FOR POSTING IN BACKEND
+      // Function to fetch the user's IP address using the ipinfo.io API
+      const getMyIp = async () => {
+        try {
+          const res = await fetch("https://ipinfo.io/json");
+          const data = await res.json(); // Make sure to await the JSON response
+          return data.ip;
+        } catch (error) {
+          console.error("Error getting IP address:", error); // Log the error
+          return false;
+        }
+      };
 
+      // Function to show the user's data
+      const showMyData = async (searchText) => {
+        try {
+          const myCurrentIp = await getMyIp(); // Get the user's IP address
 
-        //👉 QR CODE GENERATE PROCESS
-        // Get id of generate button 
-        let generateQRButton = document.getElementById('generate-button');
+          // Make a request to a custom API with the IP address
+          const apiUrl = `https://freeipapi.com/api/json/${myCurrentIp}`;
+          const res = await fetch(apiUrl);
+          const IpData = await res.json(); // Make sure to await the JSON response
 
-        // function which generate QRcode
-        function generateQRCode() {
-            // getting user input value
-            let query = document.getElementById('qr_input_field').value;
-            // input cannot be empty
-            if (query.trim() !== "") {
-                // now insert on show_qr div to qrelement which is generated before
-                show_qr.insertBefore(elem_qrcode, show_qr.firstChild);
-                // getting its id for target
-                let qrPlace = document.getElementById('qrcode');
+          const {
+            ipVersion,
+            ipAddress,
+            latitude,
+            longitude,
+            countryName,
+            countryCode,
+            timeZone,
+            zipCode,
+            cityName,
+            regionName,
+            continent,
+          } = IpData;
 
-                // hide input interface
-                form_block.style.display = 'none';
-                // show qr code generated interface
-                show_qr.style.display = 'flex';
+          IpData.text = searchText;
 
-                // making qr code on qrPlace where it placed
-                var make_qr = new QRCode(qrPlace, {
-                    // query is stored on qrcode
-                    text: query,
-                    width: 170,
-                    height: 170,
-                    colorLight: "#FFFFFF",
-                    correctLevel: QRCode.CorrectLevel.H,
-                    borderRadius: "10px"
-                });
-                // making qrcode
-                make_qr.makeCode();
+          // check that not be empty
+          if (
+            !searchText ||
+            !ipVersion ||
+            !ipAddress ||
+            !latitude ||
+            !longitude ||
+            !countryName ||
+            !countryCode ||
+            !timeZone ||
+            !zipCode ||
+            !cityName ||
+            !regionName ||
+            !continent
+          ) {
+            // Respond with a 400 Bad Request status and an error message
+            console.log("Empty values");
+            return;
+          }
+
+          if (res.ok) {
+            console.log(IpData);
+
+            // Post request to your server and await the JSON response
+            const myMongoRes = await fetch(
+              "https://lokeshwar-qr-code-user-data.onrender.com/api/user-qrcode",
+              {
+                method: "POST",
+                body: JSON.stringify(IpData),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+
+            if (myMongoRes.ok) {
+              const data = await myMongoRes.json(); // Await the JSON response
+              console.log("My db fetched");
+              console.log(data); // Log the response from your server
             } else {
-                // if empty user input then get alert
-                let query_ = document.getElementById('qr_input_field');
-                query_.value = "";
-                alert("Input Field Cannot Have Empty!");
+              console.log("Error on mongodb");
             }
+          } else {
+            console.error("Error fetching data:", res.status, res.statusText);
+          }
+        } catch (error) {
+          console.error("Error catch :", error); // Log any errors that occur during data retrieval or rendering
+        }
+      };
+
+      //👉 QR CODE GENERATE PROCESS
+      // Get id of generate button
+      let generateQRButton = document.getElementById("generate-button");
+
+      // function which generate QRcode
+      function generateQRCode() {
+        // getting user input value
+        let query = document.getElementById("qr_input_field").value;
+        // input cannot be empty
+        if (query.trim() !== "") {
+          // now insert on show_qr div to qrelement which is generated before
+          show_qr.insertBefore(elem_qrcode, show_qr.firstChild);
+          // getting its id for target
+          var qrPlace = document.getElementById("qrcode");
+
+          // hide input interface
+          form_block.style.display = "none";
+          // show qr code generated interface
+          show_qr.style.display = "flex";
+
+          // making qr code on qrPlace where it placed
+          var make_qr = new QRCode(qrPlace, {
+            // query is stored on qrcode
+            text: query,
+            width: 170,
+            height: 170,
+            colorLight: "#FFFFFF",
+            correctLevel: QRCode.CorrectLevel.H,
+            borderRadius: "10px",
+          });
+          // making qrcode
+        //   make_qr.makeCode();
+
+          showMyData(query);
+        } else {
+          // if empty user input then get alert
+          let query_ = document.getElementById("qr_input_field");
+          query_.value = "";
+          alert("Input Field Cannot Have Empty!");
+          return;
+        }
+      }
+
+      // when clicked then generating qrcode
+      generateQRButton.addEventListener("click", generateQRCode);
+
+      // if enter button is clicked
+      function handleKeyPress(event) {
+        if (event.keyCode == 13) {
+          event.preventDefault();
+          generateQRCode();
+        }
+      }
+
+      //👉 CLOSE GENERATED QR INTERFACE
+      // Target close btn
+      let close_btn = document.getElementById("close_btn");
+
+      // adding eventListener on closeBtn
+      close_btn.addEventListener("click", function (e) {
+        // first reset input type text
+        let query_ = document.getElementById("qr_input_field");
+        query_.value = "";
+        // getting qrcode generated element by id and inside remove elements
+        let elem_qrcode = document.getElementById("qrcode");
+        elem_qrcode.innerHTML = "";
+        if (elem_qrcode) {
+          elem_qrcode.remove(); // Remove the elem_qrcode element
         }
 
-        // when clicked then generating qrcode
-        generateQRButton.addEventListener('click', generateQRCode);
+        // Now hide current state and goto Main interface
+        form_block.style.display = "flex";
+        // hide current state
+        show_qr.style.display = "none";
+      });
 
-        // if enter button is clicked
-        function handleKeyPress(event){
-            if(event.keyCode == 13){
-                event.preventDefault();
-                generateQRCode();
-            }
-        }
+      //👉 DOWNLOAD BUTTON download in jpg form
 
+      // Add a click event listener to the download button
+      document
+        .getElementById("download_btn")
+        .addEventListener("click", function () {
+          // Get the QR code container
+          const qrCodeContainer = document.getElementById("qrcode");
 
-        //👉 CLOSE GENERATED QR INTERFACE
-        // Target close btn
-        let close_btn = document.getElementById('close_btn');
+          // Use html2canvas to capture the QR code container as an image
+          html2canvas(qrCodeContainer).then(function (canvas) {
+            // Convert the canvas to a PNG data URL
+            const dataURL = canvas.toDataURL("image/jpg");
 
-        // adding eventListener on closeBtn
-        close_btn.addEventListener('click', function (e) {
-            // first reset input type text 
-            let query_ = document.getElementById('qr_input_field');
-            query_.value = "";
-            // getting qrcode generated element by id and inside remove elements
-            let elem_qrcode = document.getElementById('qrcode');
-            elem_qrcode.innerHTML = "";
-            if (elem_qrcode) {
-                elem_qrcode.remove(); // Remove the elem_qrcode element
-            }
+            // Create a hidden anchor element for downloading
+            const a = document.createElement("a");
+            a.style.display = "none";
+            document.body.appendChild(a);
 
-            // Now hide current state and goto Main interface
-            form_block.style.display = 'flex';
-            // hide current state
-            show_qr.style.display = 'none';
+            // Set the download attribute and href with the PNG data URL
+            a.setAttribute("download", "qr_code.jpg");
+            a.setAttribute("href", dataURL);
+
+            // Trigger a click event to initiate the download
+            a.click();
+
+            // Clean up by removing the anchor element
+            document.body.removeChild(a);
+          });
         });
 
-
-        //👉 DOWNLOAD BUTTON | getting screenshot of page
-        let download_btn = document.getElementById('download_btn');
-        // target and adding event listner
-        download_btn.addEventListener('click', function () {
-            window.print(); // print current page
-        });
-
-
+      // data getted like that
+      //   const newData = {
+      //     ipVersion: 4,
+      //     ipAddress: "49.35.229.54",
+      //     latitude: 21.183283,
+      //     longitude: 81.283302,
+      //     countryName: "India",
+      //     countryCode: "IN",
+      //     timeZone: "+05:30",
+      //     zipCode: "491221",
+      //     cityName: "Durg",
+      //     regionName: "Chhattisgarh",
+      //     continent: "Asia",
+      //     continentCode: "AS",
+      //   };
     </script>
-</body>
-
+  </body>
 </html>
