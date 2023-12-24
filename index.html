@@ -1,118 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to my portfolio website! My name is Lokeshwar Prasad and I am a BTech Engineering CSE student with expertise in frontend design and fullstack development. Explore my work and skills on this website.">
-    <meta name="keywords" content="Lokeshwar Prasad, Portfolio, Frontend Design, Fullstack Development, BTech Engineering, CSE Student">
-    <title>Lokeshwar | Frontend Designer and Fullstack Developer Portfolio</title>
-    <link rel="stylesheet" href="css/index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Welcome to my portfolio website! My name is Lokeshwar Prasad and I am a BTech Engineering CSE student with expertise in frontend design and fullstack development. Explore my work and skills on this website."
+    />
+    <meta
+      name="keywords"
+      content="Lokeshwar Prasad, Portfolio, Frontend Design, Fullstack Development, BTech Engineering, CSE Student"
+    />
+    <title>
+      Lokeshwar | Frontend Designer and Fullstack Developer Portfolio
+    </title>
+    <!-- locomotive library for scroll smooth -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Nunito+Sans&family=Rubik&family=Signika+Negative&display=swap"
-        rel="stylesheet">
-</head>
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
+    />
+    <!-- Sheryjs library for some animations -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sheryjs/dist/Shery.css"
+    />
+    <!-- Some font imported from google-fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Overpass&family=Signika+Negative&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
 
-<body>
+  <body>
     <section class="banner">
-        <header>
-            <a href="/" class="logo">
-                <span>My</span>Portfolio_ </a>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="https://www.linkedin.com/in/lokeshwar-prasad-dewangan-7b2163211/">About</a></li>
-                <li><a href="my-projects.html">PROJECTS</a></li>
-                <li><a href="https://www.instagram.com/lokeshwarprasad1/">Contact</a></li>
-            </ul>
-        </header>
-        <div class="content">
-            <div class="my-info">
-                <div class="message">
-                    <h3>Hey_</h3>
-                    <h2>I am <span id="text"></span></h2>
-                    <p>
-                        I am Full Stack Developer and pursuing my 3rd year of BTech Computer Science branch.I am learner & spend more time on Computer technologies. 
-                        <!-- email me at : lokeshwar.prasad.cse@gmail.com -->
-                    </p>
-                </div>
-                <button id="speak-btn" class="btn">click to listen..</button>
-                <div id="btns">
-                    <button class="btn" onclick="hireMe()">Hire Me</button>
-                    <button class="chat" onclick="letChat()">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
-                        Let's Chat
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <img src="Images/colors.png" alt="" class="colors" srcset="">
-        <img src="Images/men.png" alt="" class="men" srcset="">
-
-        <ul class="sci">
-            <li><a href="https://www.facebook.com/lokeshwarprasad.dewangan.7/"><ion-icon name="logo-facebook"></ion-icon></a></li>
-            <li><a href="https://www.linkedin.com/in/lokeshwar-prasad-dewangan-7b2163211/"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-            <li><a href="https://github.com/LokeshwarPrasad3"><ion-icon name="logo-github"></ion-icon></a></li>
-            <li><a href="https://www.instagram.com/lokeshwarprasad1/"><ion-icon name="logo-instagram"></ion-icon></a></li>
+      <!-- Header section where Navbar exists -->
+      <header>
+        <a href="/" class="logo magnet"> <span>My</span>Portfolio_ </a>
+        <ul>
+          <li><a class="magnet" href="/">Home</a></li>
+          <li>
+            <a
+              class="magnet"
+              href="https://www.linkedin.com/in/lokeshwar-prasad-dewangan-7b2163211/"
+              >About</a
+            >
+          </li>
+          <li><a class="magnet" href="my-projects.html">PROJECTS</a></li>
+          <li>
+            <a class="magnet" href="https://www.instagram.com/lokeshwarprasad1/"
+              >Contact</a
+            >
+          </li>
         </ul>
+      </header>
 
-        <div class="dayNight">
-            <ion-icon name="moon-outline"></ion-icon>
-            <ion-icon name="sunny-outline"></ion-icon>
+      <!-- Below of navbar section -->
+      <div class="content">
+        <!-- My introduction details -->
+        <div class="my-info">
+          <div class="message">
+            <h3 class="magnet">Hey_</h3>
+            <h2 class="hvr">I am <span class="hvr" id="text"></span></h2>
+            <p>
+              I am Full Stack Developer and pursuing my 3rd year of BTech
+              Computer Science branch.I am learner & spend more time on Computer
+              technologies.
+              <!-- email me at : lokeshwar.prasad.cse@gmail.com -->
+            </p>
+          </div>
+          <button id="speak-btn" class="btn">click to listen..</button>
+          <!-- buttons which redirect to my profile -->
+          <div id="btns">
+            <button class="btn" onclick="hireMe()">Hire Me</button>
+            <button class="chat" onclick="letChat()">
+              <ion-icon name="chatbubbles-outline"></ion-icon>
+              Let's Chat
+            </button>
+          </div>
         </div>
+      </div>
 
+      <!-- background of my image with animation -->
+      <img src="Images/colors.png" alt="" class="colors" srcset="" />
+      <img src="Images/men.png" alt="" class="men" srcset="" />
 
-        <img src="Images/men-cut.png" alt="" id="men-cut" class="men" srcset="">
+      <!-- all social media icons which redirect to my page -->
+      <ul class="sci">
+        <li>
+          <a href="https://www.facebook.com/lokeshwarprasad.dewangan.7/"
+            ><ion-icon class="magnet" name="logo-facebook"></ion-icon
+          ></a>
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/lokeshwar-prasad-dewangan-7b2163211/"
+            ><ion-icon class="magnet" name="logo-linkedin"></ion-icon
+          ></a>
+        </li>
+        <li>
+          <a href="https://github.com/LokeshwarPrasad3"
+            ><ion-icon class="magnet" name="logo-github"></ion-icon
+          ></a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/lokeshwarprasad1/"
+            ><ion-icon class="magnet" name="logo-instagram"></ion-icon
+          ></a>
+        </li>
+      </ul>
 
+      <!-- Button which toggle day night mode -->
+      <div class="dayNight">
+        <ion-icon name="moon-outline"></ion-icon>
+        <ion-icon name="sunny-outline"></ion-icon>
+      </div>
+
+      <!-- big image hidden and this image visible when mobile size  -->
+      <img src="Images/men-cut.png" alt="" id="men-cut" class="men" srcset="" />
     </section>
 
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- ✅ JavaScript Part start from here -->
+
+    <!-- GSAP library for animation must includes when use shery.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- shery js library cdn which used for animation (mouseFollower, makeMagnet, circleMedia effects  -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/sheryjs/dist/Shery.js"
+    ></script>
+    <!-- locomotive script used to smooth scrolling -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
+    <!-- ion-icons for small icons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- library for text-typed-animation -->
     <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
-
-    <script>
-
-        let typingText = new Typed("#text", {
-            strings: ["Lokeshwar", "Programmer", "Designer"],
-            loop: true,
-            typeSpeed: 100,
-            backSpeed: 50,
-            backDelay: 1000
-        })
-
-        let banner = document.querySelector('.banner');
-        let dayNight = document.querySelector('.dayNight');
-        dayNight.onclick = function () {
-            banner.classList.toggle('night');
-        }
-
-        // for click in let's chat button it redirect to instagram page
-        function letChat(){
-            location.href = 'https://www.instagram.com/lokeshwarprasad1/';
-        }
-
-        // for click in Hire me chat button it redirect to instagram page
-        function hireMe(){
-            location.href = 'https://www.linkedin.com/in/lokeshwar-prasad-dewangan-7b2163211/';
-        }
-
-
-        // speech recognisation
-        // let speak_btn = document.getElementById('speak-btn');
-        if ('speechSynthesis' in window) {
-            const speech = new SpeechSynthesisUtterance();
-            
-            // Set the text to be spoken
-            speech.text = " I am Full Stack Developer and pursuing my second year of BTech Computer Science branch. I am learner & spend more time on Computer technologies.";
-
-            // Speak the text when the button is clicked
-            document.getElementById('speak-btn').addEventListener('click', () => {
-                window.speechSynthesis.speak(speech);
-            });
-        } else {
-            console.log('Text-to-speech not supported in this browser.');
-        }
-    </script>
-
-</body>
-
+    <!-- Our user-written-javascript -->
+    <script src="./script.js"></script>
+  </body>
 </html>
