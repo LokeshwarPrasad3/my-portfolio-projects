@@ -48,16 +48,16 @@ if ("speechSynthesis" in window) {
 
 
 //🚀 Animation using Shery.js and Locomotive.js gsap 
-
-Shery.mouseFollower();
-// // make magnet effect
-Shery.makeMagnet(".magnet");
-
 // // locomotive js for smooth-scrolling
 const scroll = new LocomotiveScroll({
     el: document.querySelector('.banner'),
     smooth: true
 });
+
+Shery.mouseFollower();
+// // make magnet effect
+Shery.makeMagnet(".magnet");
+
 
 // circle magnet effects
 Shery.hoverWithMediaCircle(".hvr", {
